@@ -28,8 +28,6 @@
         <module>rpc-api</module>
         <module>hello-service-api</module>
         <module>rpc-netty</module>
-        <module>leetcode</module>
-        <module>leetCode</module>
         <module>leet.code</module>
     </modules>
     <packaging>pom</packaging>
