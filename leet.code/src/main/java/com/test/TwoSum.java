@@ -1,10 +1,11 @@
 package com.test;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /*
-    (两数之和)
+    leetcode 1 (两数之和)
     数据结构：数组
 
     题目描述：
@@ -42,7 +43,7 @@ public class TwoSum {
 
 }
 /*
-两数相加
+leetcode2 两数相加
 数据结构：链表
 
 题目描述
@@ -110,6 +111,80 @@ class Code{
         return pre.next;
     }
 
+}
+
+
+/*      leetcode 3 (无重复最长子串)
+        给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+
+        示例 1:
+            输入: "abcabcbb"
+            输出: 3
+            解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+        示例 2:
+            输入: s = "bbbbb"
+            输出: 1
+            解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+            示例 3:
+        示例 3:
+            输入: s = "pwwkew"
+            输出: 3
+            解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+                 请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+
+            abcdc
+*/
+
+class NoRepeatMostLongStr{
+    public static void main(String[] args) {
+        int res = cal("bbbbb");
+        System.out.println(res);
+    }
+
+    public static int cal(String ex){
+        HashSet<Character> temp = new HashSet<>();
+        int length = ex.length();
+        int point =-1,result =0;
+        for(int i=0;i<length;i++){
+            if(i!=0){
+                temp.remove(ex.charAt(i-1));//左指针右移,temp删一个
+            }
+            //右指针小于最大,且前面无重复
+            while ((point+1)<length  &&  !temp.contains(ex.charAt(point+1))){
+                temp.add(ex.charAt(point+1));
+                point++;
+            }
+            result = Math.max(result,point-i+1);
+        }
+        return result;
+    }
+}
+
+
+
+
+/*
+        leetcode 704(二分查找)
+        给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。
+
+        示例 1:
+        输入: nums = [-1,0,3,5,9,12], target = 9
+        输出: 4
+        解释: 9 出现在 nums 中并且下标为 4
+
+        示例 2:
+        输入: nums = [-1,0,3,5,9,12], target = 2
+        输出: -1
+        解释: 2 不存在 nums 中因此返回 -1
+*/
+class ErFenFind{
+    public static void main(String[] args) {
+
+    }
+
+    public void search(){
+
+    }
 }
 
 
