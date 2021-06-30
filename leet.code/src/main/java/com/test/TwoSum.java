@@ -3,6 +3,9 @@ package com.test;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /*
     leetcode 1 (两数之和)
@@ -201,6 +204,63 @@ class  RemoveElements{
 }
 
 
+/*
+     leetcode 88:合并两个有序数组
+     给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
+     初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。你可以假设 nums1 的空间大小等于 m + n，这样它就有足够的空间保存来自 nums2 的元素。
+
+         示例 1：
+         输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+         输出：[1,2,2,3,5,6]
+
+        示例 2：
+         输入：nums1 = [1], m = 1, nums2 = [], n = 0
+         输出：[1]
+          
+
+         提示:
+         nums1.length == m + n
+         nums2.length == n
+         0 <= m, n <= 200
+         1 <= m + n <= 200
+         -109 <= nums1[i], nums2[i] <= 109
+ */
+
+class MergeArray{
+    public static  void mergeArr(int[] arr1,int m,int[] arr2,int n){
+        int p1=0;
+        int p2=0;
+        int[] result = new int[m+n];
+        int current;
+        while (p1<m || p2<n){
+            if(p1==m){
+                current = arr2[p2++];
+            }else if(p2==n){
+                current = arr1[p1++];
+            }else if(arr1[p1]<arr2[p2]){
+                current = arr1[p1++];
+            }else {
+                current = arr2[p2++];
+            }
+            result[p1+p2-1] = current;
+        }
+        for(int i=0;i<result.length;i++){
+            System.out.print(result[i]);
+            arr1[i] = result[i];
+        }
+
+
+
+    }
+
+    public static void main(String[] args)  {
+        int[] num1 = new int[]{1,2,3,0,0,0};
+        int[] num2 = new int[]{2,5,6};
+        int m=3;
+        int n=3;
+        mergeArr(num1,m,num2,n);
+    }
+}
 
 
 
